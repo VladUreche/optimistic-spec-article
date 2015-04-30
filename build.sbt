@@ -30,8 +30,9 @@ lazy val attempt6 = project.
   in(file("attempt6")).
   enablePlugins(BenchmarkPlugin).
   settings(
-    resolvers += Resolver.sonatypeRepo("snapshots"),
-    libraryDependencies += "org.scala-miniboxing.plugins" %% "miniboxing-runtime" % "0.4-SNAPSHOT" changing(),
-    addCompilerPlugin("org.scala-miniboxing.plugins" %% "miniboxing-plugin" % "0.4-SNAPSHOT" changing()),
-    scalacOptions ++= Seq("-P:minibox:warn", "-P:minibox:Yrewire-functionX-application")
+    //resolvers += Resolver.sonatypeRepo("snapshots"),
+    //libraryDependencies += "org.scala-miniboxing.plugins" %% "miniboxing-runtime" % "0.4-SNAPSHOT" from "file:///home/sun/workspace/dev/miniboxing-plugin/components/runtime/target/scala-2.11/miniboxing-runtime_2.11-0.4-SNAPSHOT.jar" changing(),
+    // addCompilerPlugin("org.scala-miniboxing.plugins" %% "miniboxing-plugin" % "0.4-SNAPSHOT" from "file:///home/sun/workspace/dev/miniboxing-plugin/components/plugin/target/scala-2.11/miniboxing-plugin_2.11-0.4-SNAPSHOT.jar" changing()),
+    scalacOptions += "-Xplugin:/mnt/data1/Work/Workspace/dev/miniboxing-plugin/components/plugin/target/scala-2.11/miniboxing-plugin_2.11-0.4-SNAPSHOT.jar",
+    unmanagedJars in Compile += file("/home/sun/workspace/dev/miniboxing-plugin/components/runtime/target/scala-2.11/miniboxing-runtime_2.11-0.4-SNAPSHOT.jar")
   )
